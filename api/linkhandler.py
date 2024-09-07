@@ -12,3 +12,14 @@ class LinkHandler:
                 continue
             else:
                 return random_string
+            
+    
+    def is_valid_url(url):
+        if not url.startswith(('http://', 'https://')):
+            return False
+        return True
+    
+    def short_link_exists(short_code):
+        if ShortLink.objects.filter(short_code = short_code).exists():
+            return True
+        return False
