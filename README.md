@@ -21,8 +21,8 @@ This Django project provides an API for shortening URLs. It allows you to shorte
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/your-repository.git
-   cd your-repository
+   git clone https://github.com/sarthakghere/UrlShortener.git
+   cd UrlShortener
    ```
 
 2. **Create a virtual environment and activate it:**
