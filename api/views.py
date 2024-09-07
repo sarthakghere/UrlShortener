@@ -89,5 +89,6 @@ def redirect_to_url(request,short_code):
         short_link = ShortLink.objects.get(short_code=short_code)
     except ShortLink.DoesNotExist:
         return Response({'error': 'Invalid short_code'}, status=status.HTTP_404_NOT_FOUND)
-    
+    short_link.accessCount += 1
+    short_link.save()
     return redirect(short_link.url)

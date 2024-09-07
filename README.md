@@ -6,8 +6,10 @@ This Django project provides an API for shortening URLs. It allows you to shorte
 
 - **Shorten URL**: Generate a short code for a given URL.
 - **Retrieve URL**: Get the original URL from a short code.
-- **Update URL**: Modify the original URL associated with a short code.
+- **Update Shorten URL**: Modify the original URL associated with a short code.
 - **Delete URL**: Remove a short code and its associated URL.
+- **Redirect to Original URL**: Redirects user to the original URL associated with a short code.
+
 
 ## Technologies
 
@@ -54,83 +56,97 @@ This Django project provides an API for shortening URLs. It allows you to shorte
 
 ### Shorten URL
 
-- **Endpoint:** `/api/shorten/`
+- **Endpoint:** `/shorten/`
 - **Method:** `POST`
-- **Request Body:** 
+- **Example Request Body:** 
   ```json
   {
-    "url": "http://example.com"
+    "url": "https://www.github.com"
   }
   ```
 - **Response:**
   ```json
   {
-    "short_code": "abc123",
-    "shortened_link": "http://127.0.0.1:8000/abc123"
+    "id": 12,
+    "short_code": "gzLIfv",
+    "url": "https://www.github.com",
+    "createdAt": "2024-09-07T17:11:10.950152Z",
+    "updatedAt": "2024-09-07T17:11:10.950211Z"
   }
   ```
 
 ### Retrieve URL
 
-- **Endpoint:** `/api/retrieve/`
+- **Endpoint:** `/shorten/<short_code>/`
 - **Method:** `GET`
-- **Request Body:**
+- **Example Request URL:**
   ```json
-  {
-    "short_code": "abc123"
-  }
+  /retrieve/gzLIfv/
   ```
 - **Response:**
   ```json
   {
-    "id" : 1,
-    "short_code": "abcd1234",
-    "original_link": "http://example.com",
-    "created_at": "2024-01-01T00:00:00Z",
-    "updated_at": "2024-01-01T00:00:00Z",
-    "accessed": 10
+    "id": 12,
+    "short_code": "gzLIfv",
+    "url": "https://www.github.com",
+    "createdAt": "2024-09-07T17:11:10.950152Z",
+    "updatedAt": "2024-09-07T17:11:10.950211Z"
   }
   ```
 
 ### Update URL
 
-- **Endpoint:** `/api/update/`
-- **Method:** `PATCH`
-- **Request Body:**
+- **Endpoint:** `/shorten/<short_code>/`
+- **Method:** `PUT`
+- **Example Request Body:**
   ```json
   {
-    "short_code": "abc123",
-    "updated_url": "http://newexample.com"
+    "updated_url" : "https://google.com"
   }
   ```
 - **Response:**
   ```json
   {
-    "id" : 1,
-    "short_code": "abcd1234",
-    "original_link": "http://example.com",
-    "created_at": "2024-01-01T00:00:00Z",
-    "updated_at": "2024-01-01T00:00:00Z",
-    "accessed": 0
+    "id": 12,
+    "short_code": "gzLIfv",
+    "url": "https://google.com",
+    "createdAt": "2024-09-07T17:11:10.950152Z",
+    "updatedAt": "2024-09-07T17:14:42.836037Z"
   }
   ```
+
+### Stats URL
+
+- **Endpoint:** `/shorten/<short_code>/stats/`
+- **Method:** `GET`
+- **Example Request URL:**
+  ```text
+  /shorten/gzLIfv/stats
+  ```
+- **Response:**
+  ```json
+  {
+    "id": 12,
+    "short_code": "gzLIfv",
+    "url": "https://google.com",
+    "createdAt": "2024-09-07T17:11:10.950152Z",
+    "updatedAt": "2024-09-07T17:19:44.684297Z",
+    "accessCount": 1
+  }
+  ```
+
+
 
 ### Delete URL
 
-- **Endpoint:** `/api/delete/`
+- **Endpoint:** `/delete/<short_code>/`
 - **Method:** `DELETE`
-- **Request Body:**
-  ```json
-  {
-    "short_code": "abc123",
-  }
+- **Example Request URL:**
+  ```text
+  /delete/gzLIfv/
   ```
-- **Response:**
-  ```json
-  {
-    "message": "Short link deleted"
-  }
-  ```
+- **Response Code:** 204 No Content
+  
 
 
 
