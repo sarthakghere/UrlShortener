@@ -81,7 +81,7 @@ This Django project provides an API for shortening URLs. It allows you to shorte
 - **Method:** `GET`
 - **Example Request URL:**
   ```json
-  /retrieve/gzLIfv/
+  /shorten/gzLIfv/
   ```
 - **Response:**
   ```json
@@ -98,6 +98,11 @@ This Django project provides an API for shortening URLs. It allows you to shorte
 
 - **Endpoint:** `/shorten/<short_code>/`
 - **Method:** `PUT`
+- **Example Request URL:**
+  ```
+  /shorten/gzLIfv/
+  ```
+
 - **Example Request Body:**
   ```json
   {
@@ -139,11 +144,11 @@ This Django project provides an API for shortening URLs. It allows you to shorte
 
 ### Delete URL
 
-- **Endpoint:** `/delete/<short_code>/`
+- **Endpoint:** `/shorten/<short_code>/`
 - **Method:** `DELETE`
 - **Example Request URL:**
   ```text
-  /delete/gzLIfv/
+  /shorten/gzLIfv/
   ```
 - **Response Code:** 204 No Content
   
