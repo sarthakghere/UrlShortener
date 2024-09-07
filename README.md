@@ -14,7 +14,7 @@ This Django project provides an API for shortening URLs. It allows you to shorte
 - Django
 - Django REST Framework
 - Python
-- PostgreSQL (or any other database of your choice)
+- SQLite (or any other database of your choice)
 
 ## Installation
 
